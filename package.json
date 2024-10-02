@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "composer": "^4.1.0",
+    "csv-writer": "^1.6.0",
+    "fs": "^0.0.1-security",
+    "puppeteer": "^23.2.0",
+    "puppeteer-core": "^10.0.0"
+  }
+}
