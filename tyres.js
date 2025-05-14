@@ -9,7 +9,7 @@ const PAGE_SIZE = 20; // Adjust this as needed
 // Function to fetch tire data from the API
 async function fetchTireData(pageNumber) {
     try {
-        const response = await axios.get(`https://api.autosyncstudio.com/tires/models?p-number=${pageNumber}&p-size=${PAGE_SIZE}&i-specs&i-sizes&i-tags&i-img&key=${API_KEY}`);
+        const response = await axios.get(process.env.URLTOFETCHTIRES);
         
         // Log the full response to inspect it
         console.log(`API Response for page ${pageNumber}:`, response.data);
@@ -40,7 +40,7 @@ async function fetchTireData(pageNumber) {
 async function sendToShopify(tireModels) {
     for (const model of tireModels) {
         try {
-            const response = await axios.get(`https://api.autosyncstudio.com/tires?f-modelId=${model.Id}&i-description&i-specs&i-tags&i-price&i-img&key=${API_KEY}`);
+            const response = await axios.get(process.env.URLFETCHTIRES);
             const tires = response.data.Tires;
 
             const variants = tires.map(tire => ({
@@ -72,7 +72,7 @@ async function sendToShopify(tireModels) {
             }));
 
             const images = [];
-            const imgBaseUrl = 'https://storage.googleapis.com/autosync_tires/';
+            const imgBaseUrl = PROCESS.ENV.IMAGEBASEURL;
             const imageKeys = ['ImgAngle', 'ImgThumb', 'ImgFront', 'ImgSide1', 'ImgSide2'];
 
             imageKeys.forEach(key => {
