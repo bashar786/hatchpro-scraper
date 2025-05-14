@@ -2,8 +2,8 @@ const axios = require('axios');
 
 // Configuration settings
 const API_KEY = 'tireoutlet';
-const SHOPIFY_STORE_URL = 'https://tireoutletdemo.myshopify.com/admin/api/2024-07/products.json';
-const SHOPIFY_ACCESS_TOKEN = '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';
+const SHOPIFY_STORE_URL = process.env.Store_utn;
+const SHOPIFY_ACCESS_TOKEN = SHOPIFY_ACCESS_TOKEN;
 const PAGE_SIZE = 20; // Adjust this as needed
 
 // Function to fetch tire data from the API
